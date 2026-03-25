@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodmen | Healthy & Fast Food</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #f97316;
+            --primary-color-dark: #ea580c;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --section-padding: 5rem 0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav__content {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav__links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav__links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav__btns {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart__icon {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu__btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .header {
+            padding-top: 120px;
+            padding-bottom: 5rem;
+        }
+
+        .header__container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header__content h1 {
+            font-size: 3.5rem;
+            line-height: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .header__content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-color-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+        }
+
+        .header__image img {
+            width: 100%;
+            filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.1));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- Special Dish Section --- */
+        .section__container {
+            padding: var(--section-padding);
+        }
+
+        .section__header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .special__grid {
+            display: grid;
+            gap: 2rem;
+            /* Responsive Grid Logic */
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .special__card {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px;
+            transition: var(--transition);
+            background: var(--white);
+            border: 1px solid #f1f1f1;
+        }
+
+        .special__card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
+        }
+
+        .special__card img {
+            max-width: 180px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1));
+        }
+
+        .special__card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .special__card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .rating {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .add-cart {
+            width: 40px;
+            height: 40px;
+            background: var(--text-dark);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* --- Explore Section --- */
+        .explore__container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .explore__image img {
+            width: 100%;
+            border-radius: 20px;
+            filter: drop-shadow(15px 15px 25px rgba(0,0,0,0.15));
+        }
+
+        .explore__content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .explore__content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 768px) {
+            .nav__links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 2rem;
+                transition: 0.4s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav__links.open {
+                left: 0;
+            }
+
+            .menu__btn {
+                display: block;
+            }
+
+            .header__container, .explore__container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .header__content p {
+                margin: 0 auto 2rem;
+            }
+
+            .special__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header__content h1 {
+                font-size: 2.5rem;
+                line-height: 3rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .special__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav__content">
+            <div class="logo"><span>food</span>men</div>
+            
+            <ul class="nav__links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#shop">Shop</a></li>
+            </ul>
+
+            <div class="nav__btns">
+                <div class="cart__icon"><i class="ri-shopping-cart-2-line"></i></div>
+                <div class="menu__btn" id="menu-btn"><i class="ri-menu-line"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container header" id="home">
+        <div class="header__container">
+            <div class="header__content">
+                <h1>Made to enjoy the <br><span>true test</span></h1>
+                <p>Experience the finest culinary delights crafted with passion and fresh ingredients. We bring the restaurant experience to your doorstep.</p>
+                <button class="btn">Get Started</button>
+            </div>
+            <div class="header__image">
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d" alt="Delicious Bowl">
+            </div>
+        </div>
+    </header>
+
+    <section class="container section__container" id="menu">
+        <div class="section__header">
+            <h2>Our Special Dishes</h2>
+            <p>Most ordered items this week</p>
+        </div>
+        <div class="special__grid">
+            <div class="special__card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Salad">
+                <h4>Green Healthy Salad</h4>
+                <p>Fresh greens, avocado, and lime dressing.</p>
+                <div class="rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <div class="card__footer">
+                    <span class="price">₹100.00</span>
+                    <div class="add-cart"><i class="ri-add-line"></i></div>
+                </div>
+            </div>
+            <div class="special__card">
+                <img src="https://www.pngarts.com/files/3/Chicken-Burger-PNG-Photo.png" alt="Burger">
+                <h4>Burger</h4>
+                <p>Double patty with melted cheddar cheese.</p>
+                <div class="rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <div class="card__footer">
+                    <span class="price">₹150.00</span>
+                    <div class="add-cart"><i class="ri-add-line"></i></div>
+                </div>
+            </div>
+            <div class="special__card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Pizza">
+                <h4>Italian Pepperoni</h4>
+                <p>Traditional crust with spicy pepperoni.</p>
+                <div class="rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <div class="card__footer">
+                    <span class="price">₹180.00</span>
+                    <div class="add-cart"><i class="ri-add-line"></i></div>
+                    
+                </div>
+            </div>
+             <div class="special__card">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/055/929/891/small/three-delicious-milkshakes-in-glasses-with-toppings-and-straws-free-png.png" alt="Frosty shake">
+                <h4>Frosty shake</h4>
+                <p>A frosty shake is a thick, spoonable, frozen dairy dessert.</p>
+                <div class="rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <div class="card__footer">
+                    <span class="price">₹80.00</span>
